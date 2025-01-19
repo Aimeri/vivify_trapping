@@ -66,7 +66,7 @@ AddEventHandler("vivify_trapping:client:useTrapPhone", function()
 
 
                 TaskPlayAnim(playerPed, "mp_common", "givetake2_a", 8.0, -8, 2000, 0, 1, 0,0,0)
-	            TaskPlayAnim(currentCustomer, "mp_common", "givetake2_a", 8.0, -8, 2000, 0, 1, 0,0,0)
+	        TaskPlayAnim(currentCustomer, "mp_common", "givetake2_a", 8.0, -8, 2000, 0, 1, 0,0,0)
 
                 Wait(1000)
 
