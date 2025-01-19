@@ -61,13 +61,23 @@ AddEventHandler("vivify_trapping:client:useTrapPhone", function()
                     Wait(100)
                 end
 
+                local playerProp = CreateObject(GetHashKey("prop_paper_bag_small"), playerCoords.x, playerCoords.y, playerCoords.z, true, true, false)
+                AttachEntityToEntity(playerProp, playerPed, GetPedBoneIndex(PlayerPedId(), 28422), 0.1, 0.02, 0.0, 0.0, 0.0, 0.0, true, true, false, true, 1, true)
+
+
                 TaskPlayAnim(playerPed, "mp_common", "givetake2_a", 8.0, -8, 2000, 0, 1, 0,0,0)
 	            TaskPlayAnim(currentCustomer, "mp_common", "givetake2_a", 8.0, -8, 2000, 0, 1, 0,0,0)
 
-                Wait(3000)
+                Wait(1000)
+
+                DetachEntity(playerProp, true, true)
+                AttachEntityToEntity(playerProp, currentCustomer, GetPedBoneIndex(currentCustomer, 28422), 0.1, 0.02, 0.0, 0.0, 0.0, 0.0, true, true, false, true, 1, true)
+
+                Wait(2000)
 
                 ClearPedTasksImmediately(playerPed)
                 ClearPedTasksImmediately(currentCustomer)
+                DeleteObject(playerProp)
 
                 if math.random(1, 100) <= Config.AlertChance then
                     exports['ps-dispatch']:DrugSale()
